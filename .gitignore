@@ -1,6 +1,5 @@
 # Diretórios de build
 /target/
-/out/
 
 # Dependências do Maven
 /.m2/
