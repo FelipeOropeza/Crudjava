@@ -17,7 +17,16 @@ public class InputHelper {
 
     public int getIdade() {
         System.out.print("Digite a idade do usuário: ");
-        return scanner.nextInt();
+        int idade = scanner.nextInt();
+        scanner.nextLine();  // Consumir o caractere de nova linha pendente
+        return idade;
+    }
+
+    public int getOpcao() {
+        System.out.print("Digite sua opção: ");
+        int opcao = scanner.nextInt();
+        scanner.nextLine();  // Consumir o caractere de nova linha pendente
+        return opcao;
     }
 
     public void close() {

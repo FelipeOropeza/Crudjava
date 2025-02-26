@@ -2,7 +2,10 @@ package com.crudjava.service;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.crudjava.database.DatabaseConnection;
 import com.crudjava.model.User;
@@ -31,5 +34,24 @@ public class UserService {
             System.err.println("Erro ao inserir usuário: " + e.getMessage());
             return false;
         }
+    }
+
+    public List<User> getUsers() {
+        String sql = "SELECT * FROM users";
+        List<User> users = new ArrayList<>();
+
+        try (Connection connection = databaseConnection.getConnection();
+             PreparedStatement pstmt = connection.prepareStatement(sql);
+             ResultSet rs = pstmt.executeQuery()) {
+
+            while (rs.next()) {
+                User user = new User(rs.getString("nome"), rs.getInt("idade"));
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            System.err.println("Erro ao buscar usuários: " + e.getMessage());
+        }
+
+        return users;
     }
 }
