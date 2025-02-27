@@ -12,10 +12,10 @@ public class Main {
         InputHelper inputHelper = new InputHelper();
         UserService userService = new UserService();
 
-        // Menu de opções
         System.out.println("Escolha uma opção:");
         System.out.println("1. Adicionar usuário");
         System.out.println("2. Listar usuários");
+        System.out.println("3. Deletar usuário");
 
         int opcao = inputHelper.getOpcao();
 
@@ -45,6 +45,19 @@ public class Main {
                     for (User u : users) {
                         System.out.println("Nome: " + u.getNome() + ", Idade: " + u.getIdade());
                     }
+                }
+            }
+
+            case 3 -> {
+                int id = inputHelper.getId();
+                User user = new User(id, null, 0);
+
+                boolean success = userService.deleteUser(user);
+
+                if (success) {
+                    System.out.println("Usuário deletado com sucesso!");
+                } else {
+                    System.out.println("Falha ao deletar o usuário.");
                 }
             }
 

@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -53,5 +54,22 @@ public class UserService {
         }
 
         return users;
+    }
+
+    public boolean deleteUser(User user) {
+        String sql = "DELETE FROM users WHERE id = ?";
+
+        try (Connection connection = databaseConnection.getConnection();
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+            pstmt.setObject(1, user.getId(), Types.INTEGER);
+
+            int rowsAffected = pstmt.executeUpdate();
+            System.out.println("Exclusão bem-sucedida! " + rowsAffected + " linha(s) afetada(s).");
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Erro ao excluir usuário: " + e.getMessage());
+            return false;
+        }
     }
 }
