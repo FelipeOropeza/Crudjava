@@ -29,10 +29,10 @@ public class UserService {
             pstmt.setInt(2, user.getIdade());
 
             int rowsAffected = pstmt.executeUpdate();
-            System.out.println("Inserção bem-sucedida! " + rowsAffected + " linha(s) afetada(s).");
+            System.out.println("Insercao bem-sucedida! " + rowsAffected + " linha(s) afetada(s).");
             return true;
         } catch (SQLException e) {
-            System.err.println("Erro ao inserir usuário: " + e.getMessage());
+            System.err.println("Erro ao inserir usuario: " + e.getMessage());
             return false;
         }
     }
@@ -50,10 +50,29 @@ public class UserService {
                 users.add(user);
             }
         } catch (SQLException e) {
-            System.err.println("Erro ao buscar usuários: " + e.getMessage());
+            System.err.println("Erro ao buscar usuarios: " + e.getMessage());
         }
 
         return users;
+    }
+
+    public boolean updateUser(User user) {
+        String sql = "UPDATE users SET nome = ?, idade = ? WHERE id = ?";
+
+        try (Connection connection = databaseConnection.getConnection();
+             PreparedStatement pstmt = connection.prepareStatement(sql)) {
+
+            pstmt.setString(1, user.getNome());
+            pstmt.setInt(2, user.getIdade());
+            pstmt.setObject(3, user.getId(), Types.INTEGER);
+
+            int rowsAffected = pstmt.executeUpdate();
+            System.out.println("Atualização bem-sucedida! " + rowsAffected + " linha(s) afetada(s).");
+            return true;
+        } catch (SQLException e) {
+            System.err.println("Erro ao atualizar usuario: " + e.getMessage());
+            return false;
+        }
     }
 
     public boolean deleteUser(User user) {

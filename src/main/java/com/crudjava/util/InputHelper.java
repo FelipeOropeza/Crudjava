@@ -11,26 +11,26 @@ public class InputHelper {
     }
 
     public String getNome() {
-        System.out.print("Digite o nome do usuário: ");
+        System.out.print("Digite o nome do usuario: ");
         return scanner.nextLine();
     }
 
     public int getIdade() {
-        System.out.print("Digite a idade do usuário: ");
+        System.out.print("Digite a idade do usuario: ");
         int idade = scanner.nextInt();
         scanner.nextLine();
         return idade;
     }
 
     public int getId() {
-        System.out.print("Digite o ID do usuário: ");
+        System.out.print("Digite o ID do usuario: ");
         int id = scanner.nextInt();
         scanner.nextLine();
         return id;
     }
 
     public int getOpcao() {
-        System.out.print("Digite sua opção: ");
+        System.out.print("Digite sua opcao: ");
         int opcao = scanner.nextInt();
         scanner.nextLine();
         return opcao;
