@@ -84,6 +84,12 @@ public class UserService {
             pstmt.setObject(1, user.getId(), Types.INTEGER);
 
             int rowsAffected = pstmt.executeUpdate();
+
+            if(rowsAffected == 0) {
+                System.out.println("Nenhum usuario encontrado com o ID informado.");
+                return false;
+            }
+
             System.out.println("Exclusão bem-sucedida! " + rowsAffected + " linha(s) afetada(s).");
             return true;
         } catch (SQLException e) {

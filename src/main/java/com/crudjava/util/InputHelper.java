@@ -11,14 +11,31 @@ public class InputHelper {
     }
 
     public String getNome() {
-        System.out.print("Digite o nome do usuario: ");
-        return scanner.nextLine();
+        String nome;
+
+        do {
+            System.out.print("Digite o nome do usuario: ");
+            nome = scanner.nextLine().trim();
+
+            if (nome.isEmpty()) {
+                System.out.println("O nome do usuario não pode estar vazio. Tente novamente.");
+            }
+        } while (nome.isEmpty());
+
+        return nome;
     }
 
     public int getIdade() {
-        System.out.print("Digite a idade do usuario: ");
-        int idade = scanner.nextInt();
-        scanner.nextLine();
+        int idade = 0;
+        do {
+            System.out.print("Digite a idade do usuario: ");
+            idade = scanner.nextInt();
+
+            if (idade <= 0) {
+                System.out.println("A idade do usuario deve ser maior que zero. Tente novamente.");
+            }
+        } while (idade <= 0);
+
         return idade;
     }
 

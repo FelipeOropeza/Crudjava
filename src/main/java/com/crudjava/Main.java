@@ -24,70 +24,75 @@ public class Main {
 
             int opcao = inputHelper.getOpcao();
 
-            switch (opcao) {
-                case 1 -> {
-                    String nome = inputHelper.getNome();
-                    int idade = inputHelper.getIdade();
+            try {
+                switch (opcao) {
+                    case 1 -> {
+                        String nome = inputHelper.getNome();
+                        int idade = inputHelper.getIdade();
 
-                    User user = new User(nome, idade);
+                        User user = new User(nome, idade);
 
-                    boolean success = userService.addUser(user);
+                        boolean success = userService.addUser(user);
 
-                    if (success) {
-                        System.out.println("Usuario inserido com sucesso!");
-                    } else {
-                        System.out.println("Falha ao inserir o usuario.");
-                    }
-                }
-
-                case 2 -> {
-                    List<User> users = userService.getUsers();
-
-                    if (users.isEmpty()) {
-                        System.out.println("Nenhum usuario encontrado.");
-                    } else {
-                        System.out.println("Lista de usuarios:");
-                        for (User u : users) {
-                            System.out.println("Id: " + u.getId() + ", Nome: " + u.getNome() + ", Idade: " + u.getIdade());
+                        if (success) {
+                            System.out.println("Usuario inserido com sucesso!");
+                        } else {
+                            System.out.println("Falha ao inserir o usuario.");
                         }
                     }
-                }
 
-                case 3 -> {
-                    int id = inputHelper.getId();
-                    User user = new User(id, null, 0);
+                    case 2 -> {
+                        List<User> users = userService.getUsers();
 
-                    boolean success = userService.deleteUser(user);
-
-                    if (success) {
-                        System.out.println("Usuario deletado com sucesso!");
-                    } else {
-                        System.out.println("Falha ao deletar o usuário.");
+                        if (users.isEmpty()) {
+                            System.out.println("Nenhum usuario encontrado.");
+                        } else {
+                            System.out.println("Lista de usuarios:");
+                            for (User u : users) {
+                                System.out.println("Id: " + u.getId() + ", Nome: " + u.getNome() + ", Idade: " + u.getIdade());
+                            }
+                        }
                     }
-                }
 
-                case 4 -> {
-                    int id = inputHelper.getId();
-                    String nome = inputHelper.getNome();
-                    int idade = inputHelper.getIdade();
+                    case 3 -> {
+                        int id = inputHelper.getId();
+                        User user = new User(id, null, 0);
 
-                    User user = new User(id, nome, idade);
+                        boolean success = userService.deleteUser(user);
 
-                    boolean success = userService.updateUser(user);
-
-                    if (success) {
-                        System.out.println("Usuario atualizado com sucesso!");
-                    } else {
-                        System.out.println("Falha ao atualizar o usuario.");
+                        if (success) {
+                            System.out.println("Usuario deletado com sucesso!");
+                        } else {
+                            System.out.println("Falha ao deletar o usuário.");
+                        }
                     }
-                }
 
-                case 5 -> {
-                    loop = false;
-                    System.out.println("Saindo...");
-                }
+                    case 4 -> {
+                        int id = inputHelper.getId();
+                        String nome = inputHelper.getNome();
+                        int idade = inputHelper.getIdade();
 
-                default -> System.out.println("Opção invalida.");
+                        User user = new User(id, nome, idade);
+
+                        boolean success = userService.updateUser(user);
+
+                        if (success) {
+                            System.out.println("Usuario atualizado com sucesso!");
+                        } else {
+                            System.out.println("Falha ao atualizar o usuario.");
+                        }
+                    }
+
+                    case 5 -> {
+                        loop = false;
+                        System.out.println("Saindo...");
+                    }
+
+                    default ->
+                        System.out.println("Opção invalida.");
+                }
+            } catch (Exception e) {
+                System.err.println("Erro: " + e.getMessage());
             }
         }
 
