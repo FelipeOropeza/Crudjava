@@ -11,13 +11,12 @@ Este é um projeto simples usando Java e o Banco de dados PostgreSQL
 
 1. **Clone o repositório**:
     ```bash
-    git clone
-    cd seu-repositorio
+    git clone https://github.com/FelipeOropeza/Crudjava.git
+    cd Crudjava
 
 2. **Instale as dependências e compile o projeto:**:
     ```bash
     mvn install
-  
   
 3. **Execute o aplicativo**:
     ```bash
