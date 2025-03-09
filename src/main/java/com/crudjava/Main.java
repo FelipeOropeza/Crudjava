@@ -48,7 +48,7 @@ public class Main {
                     } else {
                         System.out.println("Lista de usuarios:");
                         for (User u : users) {
-                            System.out.println("Nome: " + u.getNome() + ", Idade: " + u.getIdade());
+                            System.out.println("Id: " + u.getId() + ", Nome: " + u.getNome() + ", Idade: " + u.getIdade());
                         }
                     }
                 }

@@ -46,7 +46,7 @@ public class UserService {
              ResultSet rs = pstmt.executeQuery()) {
 
             while (rs.next()) {
-                User user = new User(rs.getString("nome"), rs.getInt("idade"));
+                User user = new User(rs.getInt("id"), rs.getString("nome"), rs.getInt("idade"));
                 users.add(user);
             }
         } catch (SQLException e) {
