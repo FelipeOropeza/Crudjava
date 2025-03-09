@@ -2,8 +2,23 @@
 
 Este é um projeto simples usando Java e o Banco de dados PostgreSQL 
 
+## Requisitos
+- Java 21
+- Maven
+- PostgreSQL
+
 ## Como usar
 
-1. Clone o repositório.
-2. Execute `mvn install` para compilar e baixar as dependências.
-3. Execute `mvn exec:java` para rodar o aplicativo.
+1. **Clone o repositório**:
+    ```bash
+    git clone
+    cd seu-repositorio
+
+2. **Instale as dependências e compile o projeto:**:
+    ```bash
+    mvn install
+  
+  
+3. **Execute o aplicativo**:
+    ```bash
+    mvn exec:java
